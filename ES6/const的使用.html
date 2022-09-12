@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+<script>
+//一、const修饰的标识被赋值后不能修改
+  // const name = 'abc';
+  // name = '111';
+//二、使用const定义标识符后必须进行赋值
+//   const name;
+//三、被const修饰的对象不可修改但对象内部的属性可以修改
+  const obj = {
+    name : 'ming',
+    age:18,
+    height:1.88
+  };
+  // const obj = {}
+  obj.name = 'Kobe';
+  obj.age = 40;
+  obj.height = 1.66;
+
+</script>
+</body>
+</html>

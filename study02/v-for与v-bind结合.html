@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+  <style>
+    .active{
+      color:red;
+    }
+  </style>
+</head>
+<body>
+<div id="app">
+  <ul>
+    <li v-for="(itme,index) in movies" @click="changecolor(index)" :class="getClasses(index)">{{itme + index}}</li>
+  </ul>
+</div>
+
+<script src="../js/vue.js"></script>
+<script>
+  const app = new Vue({
+    el:'#app',
+    data:{
+      message:'Hello',
+      movies:['海王','火影','七龙珠','进击的巨人'],
+      isActive: [false,false,false,false],
+      A:999
+    },
+    methods:{
+      getClasses:function (index) {
+        if(this.A ==index){
+        return {active: !this.isActive[index]};}
+
+      },
+      changecolor:function (index) {
+        this.A=index;
+      }
+    }
+  })
+</script>
+</body>
+</html>

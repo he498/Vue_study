@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+
+</body>
+<script>
+  //链式结构
+  new Promise((resolve, reject) => {
+    //第一次网络请求代码
+    setTimeout(() => {
+      resolve()
+    },1000)
+  }).then(() => {
+    //第一次拿结果
+    console.log('hello world');
+    console.log('hello world');
+    console.log('hello world');
+    new Promise((resolve, reject) => {
+      //第二次网络请求
+      setTimeout(() => {
+        resolve();
+      },1000)
+    })
+  }).then(() => {
+    //第二次拿结果
+    console.log('hello vuejs');
+    console.log('hello vuejs');
+    console.log('hello vuejs');
+    new Promise((resolve, reject) => {
+      //第三次请求
+      setTimeout(() => {
+        resolve()
+      },1000)
+    })
+  }).then(() => {
+    //第三次获取结果
+    console.log('hello promise');
+    console.log('hello promise');
+    console.log('hello promise');
+  })
+
+
+
+
+</script>
+</html>

@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+
+</body>
+<script>
+  new Promise((resolve, reject) => {
+    //第一次网络请求代码
+    setTimeout(() => {
+      resolve()
+    },1000)
+  }).then(() => {
+    //第一次拿结果
+    console.log('hello world');
+    console.log('hello world');
+    console.log('hello world');
+    new Promise((resolve, reject) => {
+      //第二次网络请求
+      setTimeout(() => {
+        resolve();
+      },1000)
+    })
+  }).then(() => {
+    //第二次拿结果
+    console.log('hello vuejs');
+    console.log('hello vuejs');
+    console.log('hello vuejs');
+    new Promise((resolve, reject) => {
+      //第三次请求
+      setTimeout(() => {
+        resolve()
+      },1000)
+    })
+  }).then(() => {
+    //第三次获取结果
+    console.log('hello promise');
+    console.log('hello promise');
+    console.log('hello promise');
+  })
+
+  //一般情况下有异步操作时，使用Promise
+  //new -> 构造函数（1保存了一些状态信息 2执行传入的函数）
+  //在执行传入的回调函数时，会传入两个参数:resolve,reject 本身又是函数
+  new Promise((resolve, reject) => {
+    setTimeout(() => {})
+    //成功时使用resolve
+    resolve('hello world');
+    //失败时调用reject
+    reject('error message')
+  }).then((data) => {
+    //需要执行的代码
+    console.log(data);
+  }).catch(err => {
+    //失败时在catch这里捕获
+        console.log(err);
+      }
+  )
+
+
+</script>
+</html>

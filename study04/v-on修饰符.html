@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+
+<div id="app" @click="divClick">
+  <!--1. .stop修饰符-->
+  aaaa
+  <button @click.stop="btnClick">按钮</button>
+  <!--2. .prevent修饰符-->
+  <br>
+  <form action="baidu">
+    <input type="submit" value="提交" @click.prevent="submitClick">
+  </form>
+  <!--3. 监听键盘某个键位的修饰（这里是回车键）  -->
+  <input type="text" @keyup.enter="keyup">
+</div>
+<script src="../js/vue.js"></script>
+<script>
+  const app = new Vue({
+    el:'#app',
+    data:{
+      message:''
+    },
+    methods:{
+      btnClick() {
+        console.log('btnclick');
+      },
+      divClick() {
+        console.log('divclick');
+      },
+      submitClick(){
+        console.log('submit');
+      },
+      keyup(){
+        console.log('keyup');
+      }
+    }
+  })
+</script>
+</body>
+</html>

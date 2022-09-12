@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+
+</body>
+<script>
+
+  //请求一：
+  let isResult1 = false;
+  let isResult2 = false;
+  $ajax({
+    url:'',
+    success: function () {
+      console.log('结果1');
+      isResult1 = true;
+      handleResult()
+    }
+  })
+  //请求二：
+  $ajax({
+    url:'',
+    success: function () {
+      console.log('结果2');
+      isResult1 = true;
+      handleResult()
+    }
+  })
+
+  function handleResult() {
+    if (isResult1 && isResult2) {
+
+    }
+  }
+
+
+
+
+
+
+  // 请求： aaa->处理代码
+  //处理： aaa111 ->处理代码
+  // 处理： aaa222 ->处理代码
+
+  new Promise((resolve, reject) => {
+    setTimeout(() => {
+      resolve('aaa')
+    },1000)
+  }).then(res => {
+    console.log(res,'第一次处理处理');
+
+    //对结果第一次处理
+    return new Promise(resolve => {
+      resolve(res + '111')
+    })
+  }).then(res => {
+    console.log(res,'第二次处理');
+
+    //第二次处理
+    return new Promise(resolve => {
+      resolve(res + '222')
+    })
+  }).then(res => {
+    console.log(res,'第三次处理');
+  })
+
+
+  //简写1： return Promise.resolve()
+  new Promise((resolve, reject) => {
+    setTimeout(() => {
+      resolve('aaa')
+    },1000)
+  }).then(res => {
+    console.log(res,'第一次处理处理');
+
+    //对结果第一次处理
+    return Promise.resolve(res + '111')
+  }).then(res => {
+    console.log(res,'第二次处理');
+
+    return Promise.resolve(res + '222')
+  }).then(res => {
+    console.log(res,'第三次处理');
+  })
+
+
+  //简写2 直接省略Promise.resolve
+  new Promise((resolve, reject) => {
+    setTimeout(() => {
+      resolve('aaa')
+    },1000)
+  }).then(res => {
+    console.log(res,'第一次处理处理');
+
+    //对结果第一次处理
+    return res + '111'
+  }).then(res => {
+    console.log(res,'第二次处理');
+
+    return res + '222'
+  }).then(res => {
+    console.log(res,'第三次处理');
+  })
+
+
+  //失败操作：
+  new Promise((resolve, reject) => {
+    setTimeout(() => {
+      resolve('aaa')
+    },1000)
+  }).then(res => {
+    console.log(res,'第一次处理处理');
+
+    //对结果第一次处理
+    return new Promise((resolve, reject) => {
+     //执行catch 后面的then都不执行
+      reject('errr')
+    })
+  }).then(res => {
+    console.log(res,'第二次处理');
+
+    //第二次处理
+    return new Promise(resolve => {
+      resolve(res + '222')
+    })
+  }).then(res => {
+    console.log(res,'第三次处理');
+  }).catch(err => {
+    console.log(err);
+  })
+
+  //失败操作2 //Promise.reject()
+  new Promise((resolve, reject) => {
+    setTimeout(() => {
+      resolve('aaa')
+    },1000)
+  }).then(res => {
+    console.log(res,'第一次处理处理');
+
+    //对结果第一次处理 //Promise.reject('erro message') 也可以用 throw 'erro'
+    return Promise.reject('erro message')
+  }).then(res => {
+    console.log(res,'第二次处理');
+
+    //第二次处理
+    return new Promise(resolve => {
+      resolve(res + '222')
+    })
+  }).then(res => {
+    console.log(res,'第三次处理');
+  }).catch(err => {
+    console.log(err);
+  })
+
+</script>
+</html>

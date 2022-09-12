@@ -1,0 +1,25 @@
+{
+  "dependencies": {
+    "install": "^0.13.0",
+    "webpack": "^5.37.1"
+  },
+  "name": "loadermeet",
+  "version": "1.0.0",
+  "main": "main.js",
+  "devDependencies": {
+    "css-loader": "^5.2.5",
+    "file-loader": "^6.2.0",
+    "less": "^4.1.1",
+    "less-loader": "^9.0.0",
+    "style-loader": "^2.0.0",
+    "url-loader": "^4.1.1",
+    "webpack-cli": "^4.7.0"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "webpack"
+  },
+  "author": "",
+  "license": "ISC",
+  "description": ""
+}
